@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #noButton {
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Enter Your Name</h1>
+    <input type="text" id="nameInput" placeholder="Your name here">
+    <button onclick="openQuestion()">Submit</button>
+
+    <div id="questionDiv" style="display:none; margin-top: 50px;">
+        <h2>Are you gay?</h2>
+        <button onclick="showCongrats()">YES</button>
+        <button id="noButton" onmouseover="moveNoButton()">NO</button>
+    </div>
+
+    <div id="congratsDiv" style="display:none; margin-top: 50px;">
+        <h2 id="congratsMessage"></h2>
+    </div>
+
+    <script>
+        function openQuestion() {
+            document.getElementById('questionDiv').style.display = 'block';
+        }
+
+        function moveNoButton() {
+            var noButton = document.getElementById('noButton');
+            var x = Math.floor(Math.random() * (window.innerWidth - 100));
+            var y = Math.floor(Math.random() * (window.innerHeight - 100));
+            noButton.style.left = x + 'px';
+            noButton.style.top = y + 'px';
+        }
+
+        function showCongrats() {
+            var name = document.getElementById('nameInput').value;
+            document.getElementById('congratsMessage').innerText = `Congrats ${name}, you are gay!`;
+            document.getElementById('congratsDiv').style.display = 'block';
+            document.getElementById('questionDiv').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
+
+
+
